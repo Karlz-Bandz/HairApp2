@@ -7,12 +7,13 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import pl.hairbybieszczii.hair_bieszczii.interfaces.Mailer;
 import pl.hairbybieszczii.hair_bieszczii.model.MailModel;
 import pl.hairbybieszczii.hair_bieszczii.model.RecaptchaModel;
 
 @Service
-public class MailSenderService {
-
+public class MailSenderService implements Mailer
+{
 
     @Autowired
     private JavaMailSender mailSender;
@@ -20,8 +21,7 @@ public class MailSenderService {
     @Autowired
     private RestTemplate restTemplate;
 
-
-
+    @Override
     public void sendMail(MailModel mailModel){
 
       String url = "https://www.google.com/recaptcha/api/siteverify";
@@ -48,14 +48,9 @@ public class MailSenderService {
 
     mailSender.send(message);
 
-
-
     System.out.println("Done!");
     }else{
         System.out.println("Invalid recaptcha!");
     }
-
-
-
     }
 }
