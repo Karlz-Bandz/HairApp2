@@ -2,9 +2,11 @@ package pl.hairbybieszczii.hair_bieszczii.service.client;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.hairbybieszczii.hair_bieszczii.dto.ClientDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DescriptionDto;
+import pl.hairbybieszczii.hair_bieszczii.interfaces.ClientManager;
 import pl.hairbybieszczii.hair_bieszczii.model.EntityClient;
 import pl.hairbybieszczii.hair_bieszczii.model.EntityClientDescription;
 import pl.hairbybieszczii.hair_bieszczii.model.SelectBoxClientModel;
@@ -18,30 +20,44 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class ClientService {
+public class ClientService implements ClientManager
+{
 
     private ClientRepository clientRepository;
     private DescriptionRepository descriptionRepository;
 
-    public void addNewClient(@RequestBody ClientDto clientDto) {
+    @Transactional
+    @Override
+    public void addNewClient(@RequestBody ClientDto clientDto)
+    {
         EntityClient entityClient = new EntityClient(clientDto);
         clientRepository.save(entityClient);
     }
 
-
-    public boolean existsById(int id) {
+    @Override
+    public boolean existsById(int id)
+    {
         return clientRepository.existsById(id);
     }
 
-    public void deleteClientById(int id) {
+    @Override
+    @Transactional
+    public void deleteClientById(int id)
+    {
         clientRepository.deleteById(id);
     }
 
-    public void deleteDescriptionById(long id) {
+    @Override
+    @Transactional
+    public void deleteDescriptionById(long id)
+    {
         descriptionRepository.deleteById(id);
     }
 
-    public void addNewDescription(@RequestBody DescriptionDto descriptionDto) {
+    @Override
+    @Transactional
+    public void addNewDescription(@RequestBody DescriptionDto descriptionDto)
+    {
         EntityClient entityClient = clientRepository.findById(descriptionDto.getId()).orElseThrow(
                 () -> new RuntimeException("Klient nie istnieje!")
         );
@@ -53,8 +69,9 @@ public class ClientService {
         clientRepository.save(entityClient);
     }
 
-
-    public List<SelectBoxClientModel> getSelectClient() {
+    @Override
+    public List<SelectBoxClientModel> getSelectClient()
+    {
         List<SelectBoxClientModel> selectBoxClients = clientRepository.getSelectClients();
 
         return selectBoxClients.stream()
@@ -62,16 +79,14 @@ public class ClientService {
                 .collect(Collectors.toList());
     }
 
-    public EntityClient showChosenClientById(int id) {
+    @Override
+    public EntityClient showChosenClientById(int id)
+    {
         EntityClient client = clientRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Klient nie istnieje!")
         );
-
         client.sortListByDate();
 
         return client;
-
     }
-
-
 }
