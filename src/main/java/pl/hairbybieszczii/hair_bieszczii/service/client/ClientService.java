@@ -45,7 +45,10 @@ public class ClientService implements ClientManager
     @Transactional
     public void deleteClientById(int id)
     {
-        clientRepository.deleteById(id);
+        EntityClient client = clientRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Client not found")
+        );
+        clientRepository.delete(client);
     }
 
     @Override
