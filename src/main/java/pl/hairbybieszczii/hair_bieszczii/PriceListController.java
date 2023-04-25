@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.hairbybieszczii.hair_bieszczii.model.PriceListModel;
 import pl.hairbybieszczii.hair_bieszczii.service.PriceListService;
 
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/price")
 @AllArgsConstructor
-public class PriceListController {
+public class PriceListController
+{
 
     private PriceListService priceListService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<PriceListModel>> getPriceListService(){
-        List<PriceListModel>prices = priceListService.getPriceList();
+    public ResponseEntity<List<PriceListModel>> getPriceListService()
+    {
+        List<PriceListModel> prices = priceListService.getPriceList();
         return new ResponseEntity<>(prices, HttpStatus.OK);
     }
-
 
 }

@@ -3,21 +3,30 @@ package pl.hairbybieszczii.hair_bieszczii;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-
-
-
-
-
 import java.util.Arrays;
 
-@SpringBootApplication
+/**
+ * <strong>HairApp 2.0</strong><br>
+ * This code represents the latest version of HairApp
+ * which is the back-end system of https://hairbybieszczii.pl
+ * <br>
+ * The main changes:
+ * <li>Migration from MySQL to PostgreSQL</li>
+ * <li>Client management system is better and more stable</li>
+ * <li>Code is more readable and easier to modify</li>
+ * <li>Better documentation</li>
+ * <li>More tests</li>
+ *
+ * @author Karol Melak
+ * @since 2.0
+ */
 
+@SpringBootApplication
 public class HairBieszcziiApplication {
 
 	public static void main(String[] args) {
@@ -49,5 +58,4 @@ public class HairBieszcziiApplication {
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 	}
-
 }

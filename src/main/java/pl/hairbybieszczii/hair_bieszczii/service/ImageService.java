@@ -26,7 +26,7 @@ public class ImageService implements ImageManager
     public ImageModel getImage(int id)
     {
         ImageModel image = imageRepository.findById(id)
-                .orElseThrow(() -> new ImageNotFoundException("Nie znaleziono zdjęcia!"));
+                .orElseThrow(() -> new ImageNotFoundException("Picture not found"));
 
         return image;
     }

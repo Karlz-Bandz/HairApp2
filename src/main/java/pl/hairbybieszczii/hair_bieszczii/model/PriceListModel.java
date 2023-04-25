@@ -1,6 +1,5 @@
 package pl.hairbybieszczii.hair_bieszczii.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,13 +7,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
 @Entity
 @Table(name = "PriceListModel")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PriceListModel implements Serializable {
+public class PriceListModel implements Serializable
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,8 +27,5 @@ public class PriceListModel implements Serializable {
 
     @Column(nullable = false)
     private String price;
-
-
-
 
 }

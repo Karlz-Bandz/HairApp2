@@ -17,23 +17,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/client")
 @AllArgsConstructor
-public class ClientController {
+public class ClientController
+{
 
     private ClientService clientService;
 
     @PostMapping("add")
-    public ResponseEntity<Void> addNewClient(@RequestBody ClientDto clientDto) {
-//        if (clientService.existByName(clientDto.getClientName()) &&
-//                clientService.existBySurname(clientDto.getClientSurname()))
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
+    public ResponseEntity<Void> addNewClient(@RequestBody ClientDto clientDto)
+    {
         clientService.addNewClient(clientDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("description")
-    public ResponseEntity<Void> addDescription(@RequestBody DescriptionDto descriptionDto){
-        if(!clientService.existsById(descriptionDto.getId()))
+    public ResponseEntity<Void> addDescription(@RequestBody DescriptionDto descriptionDto)
+    {
+        if (!clientService.existsById(descriptionDto.getId()))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         clientService.addNewDescription(descriptionDto);
@@ -41,31 +40,33 @@ public class ClientController {
     }
 
     @PostMapping("delete")
-    public ResponseEntity<Void> deleteClient(@RequestBody DeleteClientModel deleteClientModel){
+    public ResponseEntity<Void> deleteClient(@RequestBody DeleteClientModel deleteClientModel)
+    {
         clientService.deleteClientById(deleteClientModel.getId());
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("delete/description")
-    public ResponseEntity<Void> deleteDescription(@RequestBody DeleteDescriptionDto deleteDescriptionDto){
+    public ResponseEntity<Void> deleteDescription(@RequestBody DeleteDescriptionDto deleteDescriptionDto)
+    {
         clientService.deleteDescriptionById(deleteDescriptionDto);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("select")
-    public ResponseEntity<List<SelectBoxClientModel>> getSelect(){
+    public ResponseEntity<List<SelectBoxClientModel>> getSelect()
+    {
         return new ResponseEntity<>(clientService.getSelectClient(), HttpStatus.OK);
     }
 
     @GetMapping("show/{id}")
-    public ResponseEntity<EntityClient> getChosenClient(@PathVariable("id") int id){
+    public ResponseEntity<EntityClient> getChosenClient(@PathVariable("id") int id)
+    {
         EntityClient entityClient = clientService.showChosenClientById(id);
 
         return new ResponseEntity<>(entityClient, HttpStatus.OK);
     }
-
-
 
 }
