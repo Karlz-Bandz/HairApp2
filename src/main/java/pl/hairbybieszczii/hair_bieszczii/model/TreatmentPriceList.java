@@ -12,7 +12,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class TreatmentPriceList implements Serializable {
+public class TreatmentPriceList implements Serializable
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

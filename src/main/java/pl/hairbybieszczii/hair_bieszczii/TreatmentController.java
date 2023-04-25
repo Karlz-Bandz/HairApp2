@@ -14,12 +14,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/treatments")
 @AllArgsConstructor
-public class TreatmentController {
+public class TreatmentController
+{
 
     private TreatmentService treatmentService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<TreatmentPriceList>> getAllTreatments(){
+    public ResponseEntity<List<TreatmentPriceList>> getAllTreatments()
+    {
         List<TreatmentPriceList> treatments = treatmentService.getAll();
         return new ResponseEntity<>(treatments, HttpStatus.OK);
     }
