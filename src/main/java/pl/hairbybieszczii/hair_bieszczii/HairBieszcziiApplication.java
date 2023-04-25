@@ -17,7 +17,6 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
 @SpringBootApplication
-
 public class HairBieszcziiApplication {
 
 	public static void main(String[] args) {

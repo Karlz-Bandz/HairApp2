@@ -60,8 +60,8 @@ public class ClientService implements ClientManager
                         .orElseThrow(
                                 () -> new RuntimeException("Description not found")
                         );
-        //entityClient.deleteDescriptionById(deleteDescriptionDto.getDescriptionId());
         entityClient.getDescriptions().remove(entityClientDescription);
+        descriptionRepository.deleteById(deleteDescriptionDto.getDescriptionId());
         clientRepository.save(entityClient);
     }
 
