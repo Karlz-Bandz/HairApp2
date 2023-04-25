@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.hairbybieszczii.hair_bieszczii.dto.ClientDto;
+import pl.hairbybieszczii.hair_bieszczii.dto.DeleteDescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.interfaces.ClientManager;
 import pl.hairbybieszczii.hair_bieszczii.model.EntityClient;
@@ -49,9 +50,19 @@ public class ClientService implements ClientManager
 
     @Override
     @Transactional
-    public void deleteDescriptionById(long id)
+    public void deleteDescriptionById(@RequestBody DeleteDescriptionDto deleteDescriptionDto)
     {
-        descriptionRepository.deleteById(id);
+        EntityClient entityClient = clientRepository.findById(deleteDescriptionDto.getUserId())
+                        .orElseThrow(
+                                () -> new RuntimeException("User not found")
+                        );
+        EntityClientDescription entityClientDescription = descriptionRepository.findById(deleteDescriptionDto.getDescriptionId())
+                        .orElseThrow(
+                                () -> new RuntimeException("Description not found")
+                        );
+        //entityClient.deleteDescriptionById(deleteDescriptionDto.getDescriptionId());
+        entityClient.getDescriptions().remove(entityClientDescription);
+        clientRepository.save(entityClient);
     }
 
     @Override

@@ -2,6 +2,7 @@ package pl.hairbybieszczii.hair_bieszczii.interfaces;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.hairbybieszczii.hair_bieszczii.dto.ClientDto;
+import pl.hairbybieszczii.hair_bieszczii.dto.DeleteDescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.model.EntityClient;
 import pl.hairbybieszczii.hair_bieszczii.model.SelectBoxClientModel;
@@ -16,7 +17,7 @@ public interface ClientManager
 
     void deleteClientById(int id);
 
-    void deleteDescriptionById(long id);
+    void deleteDescriptionById(@RequestBody DeleteDescriptionDto deleteDescriptionDto);
 
     void addNewDescription(@RequestBody DescriptionDto descriptionDto);
 

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.hairbybieszczii.hair_bieszczii.dto.ClientDto;
+import pl.hairbybieszczii.hair_bieszczii.dto.DeleteDescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.model.DeleteClientModel;
 import pl.hairbybieszczii.hair_bieszczii.model.EntityClient;
@@ -46,9 +47,9 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("delete/description/{id}")
-    public ResponseEntity<Void> deleteDescription(@PathVariable("id") int id){
-        clientService.deleteDescriptionById(id);
+    @PostMapping("delete/description")
+    public ResponseEntity<Void> deleteDescription(@RequestBody DeleteDescriptionDto deleteDescriptionDto){
+        clientService.deleteDescriptionById(deleteDescriptionDto);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -22,6 +22,4 @@ public class EntityClientDescription {
     private String description;
     @Temporal(TemporalType.DATE)
     private Date workDate;
-
-
 }
