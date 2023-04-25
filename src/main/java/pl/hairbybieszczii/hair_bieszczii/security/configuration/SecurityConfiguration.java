@@ -33,6 +33,7 @@ public class SecurityConfiguration {
                 .antMatchers(HttpMethod.GET, "/image/**", "/price/**", "/treatments/**", "/api/auth/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/auth/login", "/mail/**").permitAll()
                 .antMatchers("/api/client/delete/**", "/api/auth/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/client/delete/**" ).hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

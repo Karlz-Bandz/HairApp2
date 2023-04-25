@@ -3,12 +3,12 @@ package pl.hairbybieszczii.hair_bieszczii.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.hairbybieszczii.hair_bieszczii.dto.ClientDto;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -35,24 +35,29 @@ public class EntityClient {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "client_description_join", joinColumns = @JoinColumn(name = "client_id",
             referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "description_id",
             referencedColumnName = "id"))
-    private List<EntityClientDescription> descriptions = new ArrayList<>();
+    private Set<EntityClientDescription> descriptions = new HashSet<>();
 
     public void addToList(EntityClientDescription entityClientDescription) {
         descriptions.add(entityClientDescription);
     }
 
-    public void deleteDescriptionById(int id) {
-        descriptions.remove(Integer.valueOf(id));
+    public void deleteDescriptionById(long id) {
+        descriptions.remove(id);
     }
 
     public void sortListByDate() {
-        this.descriptions = descriptions.stream()
-                .sorted(Comparator.comparing(EntityClientDescription::getWorkDate).reversed())
-                .collect(Collectors.toList());
+//        this.descriptions = descriptions.stream()
+//                .sorted(Comparator.comparing(EntityClientDescription::getWorkDate).reversed())
+//                .collect(Collectors.toList());
+
+        Set<EntityClientDescription> set = new HashSet<>(descriptions);
+        Set<EntityClientDescription> sortedSet = new TreeSet<>(Comparator.comparing(EntityClientDescription::getWorkDate).reversed());
+        sortedSet.addAll(set);
+        this.descriptions = sortedSet;
     }
 
 
