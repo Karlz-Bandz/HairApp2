@@ -34,6 +34,7 @@ public class SecurityConfiguration {
                 .antMatchers(HttpMethod.POST, "/api/auth/login", "/mail/**").permitAll()
                 .antMatchers("/api/client/delete/**", "/api/auth/**").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/client/delete/**" ).hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/client/change" ).hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

@@ -25,7 +25,6 @@ import java.util.Arrays;
  * @author Karol Melak
  * @since 2.0
  */
-
 @SpringBootApplication
 public class HairBieszcziiApplication {
 
