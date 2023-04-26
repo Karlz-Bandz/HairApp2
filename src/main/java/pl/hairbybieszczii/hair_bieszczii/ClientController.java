@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.hairbybieszczii.hair_bieszczii.dto.ChangeDescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.ClientDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DeleteDescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DescriptionDto;
@@ -36,6 +37,13 @@ public class ClientController
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         clientService.addNewDescription(descriptionDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("change")
+    public  ResponseEntity<Void> changeDescription(@RequestBody ChangeDescriptionDto descriptionDto)
+    {
+        clientService.changeDescription(descriptionDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

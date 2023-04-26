@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
+import pl.hairbybieszczii.hair_bieszczii.dto.ChangeDescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.ClientDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DeleteDescriptionDto;
 import pl.hairbybieszczii.hair_bieszczii.dto.DescriptionDto;
@@ -84,6 +85,30 @@ public class ClientService implements ClientManager
     }
 
     @Override
+    public void changeDescription(@RequestBody ChangeDescriptionDto changeDescriptionDto)
+    {
+        EntityClient entityClient = clientRepository.findById(changeDescriptionDto.getUserId())
+                .orElseThrow(
+                        () -> new RuntimeException("User not found")
+                );
+        EntityClientDescription entityClientDescription = descriptionRepository.findById(changeDescriptionDto.getDescriptionId())
+                .orElseThrow(
+                        () -> new RuntimeException("Description not found")
+                );
+
+        entityClient.getDescriptions().remove(entityClientDescription);
+        descriptionRepository.deleteById(changeDescriptionDto.getDescriptionId());
+
+        EntityClientDescription entityClientDescriptionNew = new EntityClientDescription();
+        entityClientDescriptionNew.setDescription(changeDescriptionDto.getDescription());
+        entityClientDescriptionNew.setWorkDate(new Date());
+
+        entityClient.getDescriptions().add(entityClientDescriptionNew);
+
+        clientRepository.save(entityClient);
+    }
+
+    @Override
     public List<SelectBoxClientModel> getSelectClient()
     {
         List<SelectBoxClientModel> selectBoxClients = clientRepository.getSelectClients();
@@ -97,7 +122,7 @@ public class ClientService implements ClientManager
     public EntityClient showChosenClientById(int id)
     {
         EntityClient client = clientRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Klient nie istnieje!")
+                () -> new RuntimeException("Client not found")
         );
         client.sortListByDate();
 
