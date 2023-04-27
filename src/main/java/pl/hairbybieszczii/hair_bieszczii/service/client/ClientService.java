@@ -85,6 +85,7 @@ public class ClientService implements ClientManager
     }
 
     @Override
+    @Transactional
     public void changeDescription(@RequestBody ChangeDescriptionDto changeDescriptionDto)
     {
         EntityClient entityClient = clientRepository.findById(changeDescriptionDto.getUserId())
