@@ -1,5 +1,5 @@
 # HairApp 2.0
-[https://hairbybieszczii.pl]
+[WebSite](https://hairbybieszczii.pl)
 New version of hairbybieszczii.pl (back-end)
 
 This is the better and more stable application than ver. 1.0.
