@@ -1,6 +1,6 @@
 # HairApp 2.0
 
-<h2>New version of [hairbybieszczii.pl](https://hairbybieszczii.pl) <span style="fownt-weight: 900">(back-end)</h2>
+<h2>New version of [hairbybieszczii.pl](https://hairbybieszczii.pl) <p style="fownt-weight: 900">(back-end)</p></h2>
 
 This is the better and more stable application than ver. 1.0.
 This update is caused of found various bugs connected to 
