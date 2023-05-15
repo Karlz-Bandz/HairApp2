@@ -20,12 +20,26 @@ that shows how client management works. All data on the images is a fake data ge
 
 ![login](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/cef4feb3-0004-4fe7-a4e4-3c81a1d753c2)
 
-When click the button on the left bottom corner it routs to the login page. All client's data system is 
+When click the button on the left bottom corner it routs to the login page. All client's data API is 
 secured and configured by Spring Security
 
 <h2>2. Menu</h2>
 
 ![menu](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/bee3d948-7f00-4778-bc24-0126293bf592)
+
+After successful login you can see menu window and the first option is AddClient
+
+<h2>3. Add Client</h2>
+
+![addCLient](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/059605fd-1511-4022-b04e-8679dd921fee)
+
+On the picture is Add Client window and you have to provide name, last name and client's phone number. After 
+submit API creates Http POST request and save data in PostgreSQL that is installed on the server.
+
+<h2>4. Add Description</h2>
+
+![addDescription](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/67ae8dbf-216f-41c6-bc5e-a826caba3d0a)
+
 
 
 
