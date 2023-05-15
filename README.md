@@ -20,6 +20,14 @@ that shows how client management works. All data on the images is a fake data ge
 
 ![login](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/cef4feb3-0004-4fe7-a4e4-3c81a1d753c2)
 
+When click the button on the left bottom corner it routs to the login page. All client's data system is 
+secured and configured by Spring Security
+
+<h2>2. Menu</h2>
+
+![menu](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/bee3d948-7f00-4778-bc24-0126293bf592)
+
+
 
 
 
