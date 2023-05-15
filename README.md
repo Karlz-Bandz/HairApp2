@@ -7,8 +7,8 @@ This update is caused of found various bugs connected to
 database operations especially during the deleting of client's
 descriptions.
 
--Since ver 2.0 application is compatible with PostgreSQL by default
--New features like put request that can change the description
+<li>Since ver 2.0 application is compatible with PostgreSQL by default</li>
+<li>New features like put request that can change the description</li>
 -In all cases the database is always clean(Delete user, Delete description, Change description etc.)
 -Code cleaner
 
