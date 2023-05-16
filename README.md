@@ -40,6 +40,14 @@ submit API creates Http POST request and save data in PostgreSQL that is install
 
 ![addDescription](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/67ae8dbf-216f-41c6-bc5e-a826caba3d0a)
 
+In Add Description window you can chose one client from data and after that write some description to the client.
+After submit API creates Http POST request and save descripton inside table 'descriptions' which is related 
+whith choosen client. This request also generates the current date and saves it in description table.
+
+<h2>5. Presentation</h2>
+
+
+
 
 
 
