@@ -52,16 +52,18 @@ whith choosen client. This request also generates the current date and saves it 
 
 In the Presentation now you can see more functions than in version 1. First you have to chose the client from select box
 and submit. After that you can see all descriptions with dates added before and sor them from the oldest to the newest or
-inversely.
+inversely. If you want you can also delete the chosen description and this method will never corrupt the database as it 
+used to be before.
 
+![ChangeDesc](https://github.com/Karlz-Bandz/HairApp2/assets/57764322/22da5497-0f7e-4628-8854-28eecb25be3e)
 
+The new functionality is that you can modify descriptions in the real time. You need to just click on the text, change it and submit
+and the text will be change and set the current date.
 
+<h2>6. Delete</h2>
 
-
-
-
-
-
+The last function is Delete Client. You have to choose the client fromt the select box and submit. This function delete the client
+and the all data that is related to this client.
 
 
 
