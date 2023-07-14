@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.hairbybieszczii.hair_bieszczii.model.ImageModel;
+import pl.hairbybieszczii.hair_bieszczii.model.ImageProfileModel;
 import pl.hairbybieszczii.hair_bieszczii.service.ImageService;
 
 import java.util.List;
@@ -32,5 +33,12 @@ public class ImageController
     {
         List<ImageModel> images = imageService.getImages();
         return new ResponseEntity<>(images, HttpStatus.OK);
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<List<ImageProfileModel>> getProfileImages()
+    {
+        List<ImageProfileModel> profileImages = imageService.getProfilImages();
+        return new ResponseEntity<>(profileImages, HttpStatus.OK);
     }
 }

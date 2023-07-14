@@ -1,10 +1,11 @@
 package pl.hairbybieszczii.hair_bieszczii.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.hairbybieszczii.hair_bieszczii.exception.ImageNotFoundException;
 import pl.hairbybieszczii.hair_bieszczii.interfaces.ImageManager;
 import pl.hairbybieszczii.hair_bieszczii.model.ImageModel;
+import pl.hairbybieszczii.hair_bieszczii.model.ImageProfileModel;
+import pl.hairbybieszczii.hair_bieszczii.repo.ImageProfilRepository;
 import pl.hairbybieszczii.hair_bieszczii.repo.ImageRepository;
 
 import java.util.Collections;
@@ -15,11 +16,13 @@ public class ImageService implements ImageManager
 {
 
     private final ImageRepository imageRepository;
+    private final ImageProfilRepository imageProfilRepository;
 
-    @Autowired
-    public ImageService(ImageRepository imageRepository)
+
+    public ImageService(ImageRepository imageRepository, ImageProfilRepository imageProfilRepository)
     {
         this.imageRepository = imageRepository;
+        this.imageProfilRepository = imageProfilRepository;
     }
 
     @Override
@@ -39,5 +42,11 @@ public class ImageService implements ImageManager
         Collections.reverse(repo);
 
         return repo;
+    }
+
+    @Override
+    public List<ImageProfileModel> getProfilImages()
+    {
+        return imageProfilRepository.findAll();
     }
 }
