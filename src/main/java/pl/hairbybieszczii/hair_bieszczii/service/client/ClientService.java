@@ -20,6 +20,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * <strong>ClientService</strong> class<br>
+ * This service is responsible for managing the all client data
+ * that is stored inside PostgreSQL.<br>
+ * It allows us to:
+ * <li>Adding new client</li>
+ * <li>Delete existing client</li>
+ * <li>Adding description to chosen client</li>
+ * <li>Update any description</li>
+ * <li>Delete any description etc.</li>
+ *
+ * @author Karol Melak
+ * @since 2.0
+ */
 @Service
 @AllArgsConstructor
 public class ClientService implements ClientManager

@@ -43,9 +43,9 @@ public class HairBieszcziiApplication {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
 	    /*test*/
-		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+//		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
 		/*prod*/
-		//corsConfiguration.setAllowedOrigins(Arrays.asList("https://hairbybieszczii.pl"));
+		corsConfiguration.setAllowedOrigins(Arrays.asList("https://hairbybieszczii.pl"));
 		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 				"Accept", "Authorization", "Origin, Accept", "X-Requested-With",
 				"Access-Control-Request-Method", "Access-Control-Request-Headers"));
